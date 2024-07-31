@@ -19,7 +19,7 @@ This project offers a comprehensive .deb package for Ubuntu 24.04, providing use
 Open a terminal window and navigate to your desired directory. Then, clone the project repository using Git:
 
 ```
-git clone https://github.com/your-username/QAM_LinuxPackage.git
+git clone https://github.com/Kr1sh-Patel/QAM_LinuxPackage.git
 ```
 
 ### 2. Change Directories:
@@ -84,7 +84,7 @@ The project directory holds the following files and directories:
 ![image](https://github.com/user-attachments/assets/13e82736-b42b-4960-8e67-289ae7b600fc)
 ![image](https://github.com/user-attachments/assets/657d3c24-f168-472d-bdce-0ca087369aa6)
 
-**NOTE:** The above image shows `No browsers found.` in the `BROWSER STATUS` because the package was installed in the VM using a live-server image and not the Graphical User Interface image.
+**NOTE:** The above image shows `No browsers found.` in the `BROWSER STATUS` because the package was installed in the VM using a live-server image and not the Graphical User Interface image and no browsers were installed.
 
 ## Contributions:
 
