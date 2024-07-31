@@ -1,0 +1,7 @@
+Package: package
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Maintainer: linux linux@example.com
+Description: This package displayes system-related information, browsers and firewall status of the system on which the package is installed.
