@@ -1,0 +1,2 @@
+QAM authentication token: e17f250c-1ef6-44ae-915a-a36dfade205e
+QAM code: MTAwMDE=
