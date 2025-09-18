@@ -3,7 +3,7 @@ import json
 
 def get_ufw_status():
     try:
-        result = subprocess.run(['sudo', 'ufw', 'status', 'verbose'], capture_output=True, text=True)
+        result = subprocess.run(['sudo', 'ufw', 'status', 'verbose'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         output = result.stdout
         
         # Default values
