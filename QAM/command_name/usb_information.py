@@ -8,7 +8,7 @@ def get_usb_info():
     
     try:
         # Check if any USB devices are listed
-        devices_output = subprocess.check_output(["lsusb"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True).decode().strip()
+        devices_output = subprocess.check_output(["lsusb"], universal_newlines=True).strip()
         if devices_output:
             info["isEnabled"] = "1"
         else:
