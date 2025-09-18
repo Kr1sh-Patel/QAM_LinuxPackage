@@ -4,20 +4,22 @@ import os
 
 def get_certificate_info(cert_path):
     try:
-        # Get the subject
-        subject_command = f"openssl x509 -in {cert_path} -noout -subject"
-        subject_output = subprocess.check_output(subject_command, shell=True).decode().strip()
-        subject = subject_output.split("subject=")[-1].strip()
+        command = f"openssl x509 -in {cert_path} -noout -subject -fingerprint -sha1"
+        output = subprocess.check_output(command, shell=True).decode().strip()
 
-        # Get the thumbprint (SHA-1 fingerprint)
-        thumbprint_command = f"openssl x509 -in {cert_path} -noout -fingerprint -sha1"
-        thumbprint_output = subprocess.check_output(thumbprint_command, shell=True).decode().strip()
-        thumbprint = thumbprint_output.split("Fingerprint=")[-1].replace(":", "").strip()
+        subject, thumbprint = None, None
+        for line in output.splitlines():
+            if line.startswith("subject="):
+                subject = line.split("subject=")[-1].strip()
+            elif line.startswith("sha1 Fingerprint="):
+                thumbprint = line.split("=")[-1].replace(":", "").strip()
 
-        return {
-            "Subject": subject,
-            "Thumbprint": thumbprint
-        }
+        if subject and thumbprint:
+            return {
+                "Subject": subject,
+                "Thumbprint": thumbprint
+            }
+        return None
     except subprocess.CalledProcessError as e:
         print(f"Error processing {cert_path}: {e}")
         return None
@@ -28,7 +30,7 @@ def main():
 
     for cert_file in os.listdir(cert_dir):
         cert_path = os.path.join(cert_dir, cert_file)
-        if os.path.isfile(cert_path):
+        if os.path.isfile(cert_path) and cert_file.endswith((".pem", ".crt")):
             cert_info = get_certificate_info(cert_path)
             if cert_info:
                 cert_info_list.append(cert_info)
