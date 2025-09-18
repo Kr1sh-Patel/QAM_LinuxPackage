@@ -159,7 +159,7 @@ def get_firewall_status():
 
     # Check UFW status
     try:
-        ufw_status = subprocess.check_output("sudo ufw status verbose", shell=True, text=True)
+        ufw_status = subprocess.check_output("sudo ufw status verbose", shell=True, universal_newlines=True)
         status['UFW Status'] = ufw_status
     except subprocess.CalledProcessError:
         status['UFW Status'] = "UFW not installed or not active."
