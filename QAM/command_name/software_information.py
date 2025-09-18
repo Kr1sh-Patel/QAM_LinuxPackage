@@ -7,7 +7,7 @@ def get_installed_gui_applications():
 
     # Command to list installed applications using 'dpkg-query'
     command = "dpkg-query -Wf '${Installed-Size}\t${Version}\t${Package}\n'"
-    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
 
     if result.returncode != 0:
         print("Error running dpkg-query:", result.stderr)
