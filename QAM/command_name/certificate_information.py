@@ -11,7 +11,7 @@ def get_certificate_info(cert_path):
         for line in output.splitlines():
             if line.startswith("subject="):
                 subject = line.split("subject=")[-1].strip()
-            elif line.startswith("sha1 Fingerprint="):
+            elif line.startswith("sha1 Fingerprint=") or line.startswith("SHA1 Fingerprint="):
                 thumbprint = line.split("=")[-1].replace(":", "").strip()
 
         if subject and thumbprint:
